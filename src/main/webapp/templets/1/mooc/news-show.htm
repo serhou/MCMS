@@ -18,7 +18,7 @@
   		   		<h1 id="contentTitle">{ms:field.title/}</h1>
 		      </div>
   		    <div class="post-info">     
-    		       <p class="post-time">{ms:field.date fmt=yyyy-MM-dd hh:mm/}</p>
+    		       <p class="post-time">作者：{ms:field.author/}&nbsp;&nbsp;|&nbsp;&nbsp;来源：{ms:field.source/}&nbsp;&nbsp;|&nbsp;&nbsp;更新时间：{ms:field.date fmt=yyyy-MM-dd HH:mm:ss/}</p>
   		    </div>
   		    <div class="content-txt  gbbcode-content" id="contentTxt">
     		   		 {ms:field.content/}
@@ -44,7 +44,7 @@
           <li style="height:auto"> 
           	<a href="[field.link/]" data-gaevent="course-post-title:v3.0.0.0:academy">[field.title/]</a>
           	<p>
-               <span class="discuss-time">[field.date fmt=yyyy-MM/]</span>
+               <span class="discuss-time">[field.date fmt=yyyy-MM-dd HH:mm:ss/]</span>
                <a class="discuss-author" style="color:#1caaea" href="[field.link/]" >[field.author/]</a>
             </p>
           </li>
