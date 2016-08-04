@@ -168,8 +168,8 @@ public class MainAction extends BaseAction {
 	@RequestMapping("/updatePassword")
 	@ResponseBody
 	public void updatePassword( HttpServletResponse response,HttpServletRequest request) {
-		//获取旧的密码,MD5加密
-		String oldManagerPassword = StringUtil.Md5(request.getParameter("oldManagerPassword"));
+		//获取旧的密码,MD5加密	账号+旧密码+M
+		String oldManagerPassword = StringUtil.Md5(request.getParameter("managerName"), request.getParameter("oldManagerPassword"), "M");
 		//获取新的密码
 		String newManagerPassword = request.getParameter("newManagerPassword");
 		//获取管理员信息
@@ -190,8 +190,8 @@ public class MainAction extends BaseAction {
 			this.outJson(response, ModelCode.ROLE, false, getResString("err.length", this.getResString("managerPassword"), "1", "16"));
 			return;
 		}
-		//更改密码
-		manager.setManagerPassword(StringUtil.Md5(newManagerPassword));
+		//更改密码 账号+新密码+M
+		manager.setManagerPassword(StringUtil.Md5(request.getParameter("managerName"), newManagerPassword, "M"));
 		//更新
 		managerBiz.updateUserPasswordByUserName(manager);
 		this.outJson(response, ModelCode.ROLE, true, null);

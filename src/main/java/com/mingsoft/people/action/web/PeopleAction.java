@@ -169,7 +169,8 @@ public class PeopleAction extends BaseAction {
 		}
 
 		// 将用户输入的密码用MD5加密再和数据库中的进行比对
-		String peoplePassWord = MD5Util.MD5Encode(people.getPeoplePassword(), Const.UTF8);
+//		String peoplePassWord = MD5Util.MD5Encode(people.getPeoplePassword(), Const.UTF8);
+		String peoplePassWord = StringUtil.Md5(people.getPeopleName(), people.getPeoplePassword(), "P");
 		if (peoplePassWord.equals(peopleEntity.getPeoplePassword())) {
 			// 登录成功,压入用户session
 			this.setPeopleBySession(request, peopleEntity);

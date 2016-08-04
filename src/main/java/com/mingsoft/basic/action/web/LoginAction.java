@@ -166,7 +166,7 @@ public class LoginAction extends BaseAction {
 			this.outJson(response, ModelCode.ADMIN_LOGIN, false, this.getResString("err.nameEmpty"));
 		} else {
 			// 判断当前用户输入的密码是否正确
-			if (StringUtil.Md5(manager.getManagerPassword()).equals(_manager.getManagerPassword())) {
+			if (StringUtil.Md5(manager.getManagerName(), manager.getManagerPassword(), "M").equals(_manager.getManagerPassword())) {
 				SystemSkinEntity systemSkin = systemSkinBiz.getByManagerId(_manager.getManagerId());
 				// 创建管理员session对象
 				ManagerSessionEntity managerSession = new ManagerSessionEntity();

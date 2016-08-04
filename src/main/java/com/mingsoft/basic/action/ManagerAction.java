@@ -325,8 +325,8 @@ public class ManagerAction extends BaseAction {
 		// 新增网站时添加管理员
 		if (!StringUtil.isBlank(basicId)) {
 			RoleEntity role = new RoleEntity();
-			if(flag){
-				manager.setManagerPassword(StringUtil.Md5(manager.getManagerPassword()));
+			if(flag){//新增时加盐：账号+密码+M
+				manager.setManagerPassword(StringUtil.Md5(manager.getManagerName(), manager.getManagerPassword(), "M"));
 				//保存站点管理员
 				websiteID = Integer.parseInt(basicId);
 				managerBiz.saveEntity(manager);
@@ -373,13 +373,13 @@ public class ManagerAction extends BaseAction {
 			//设置管理员角色ID为自身角色ID
 			manager.setManagerRoleID(roleBiz.queryRoleByRoleName(role.getRoleName(), role.getRoleManagerId()).getRoleId());
 			if(!StringUtil.isBlank(manager.getManagerPassword())){
-				manager.setManagerPassword(StringUtil.Md5(oldPassword));
+				manager.setManagerPassword(StringUtil.Md5(manager.getManagerName(), oldPassword, "M"));
 				//更新管理员
 				managerBiz.updateEntity(manager);
 			}
 		} else {
 			if (!StringUtil.isBlank(manager.getManagerPassword())) {
-				manager.setManagerPassword(StringUtil.Md5(manager.getManagerPassword()));
+				manager.setManagerPassword(StringUtil.Md5(manager.getManagerName(), manager.getManagerPassword(), "M"));
 			}
 			if(flag){
 					managerBiz.saveEntity(manager);					

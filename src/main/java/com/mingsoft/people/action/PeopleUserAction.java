@@ -180,9 +180,9 @@ public class PeopleUserAction extends BaseAction{
 			this.peopleUserBiz.saveEntity(peopleUser);
 		}
 		//判断用户密码是否为空，如果不为空则进行密码的更新
-		if(!StringUtil.isBlank(StringUtil.Md5(peopleUser.getPeoplePassword()))){
+		if(!StringUtil.isBlank(peopleUser.getPeoplePassword())){
 			//设置用户密码
-			peopleUser.setPeoplePassword(StringUtil.Md5(peopleUser.getPeoplePassword()));
+			peopleUser.setPeoplePassword(StringUtil.Md5(peopleUser.getPeopleName(), peopleUser.getPeoplePassword(), "P"));
 		}
 		//存在则进行更新操作
 		this.peopleUserBiz.updatePeople(peopleUser);;
@@ -249,9 +249,9 @@ public class PeopleUserAction extends BaseAction{
 			return;
 		}
 		//判断用户密码是否为空，如果不为空则进行密码的保存
-		if(!StringUtil.isBlank(StringUtil.Md5(peopleUser.getPeoplePassword()))){
+		if(!StringUtil.isBlank(peopleUser.getPeoplePassword())){
 			//设置用户密码
-			peopleUser.setPeoplePassword(StringUtil.Md5(peopleUser.getPeoplePassword()));
+			peopleUser.setPeoplePassword(StringUtil.Md5(peopleUser.getPeopleName(), peopleUser.getPeoplePassword(), "P"));
 		}
 		
 		peopleUser.setPeopleAppId(this.getAppId(request));

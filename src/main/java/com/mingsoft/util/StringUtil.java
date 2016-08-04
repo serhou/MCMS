@@ -480,6 +480,27 @@ public class StringUtil {
 		}
 		return buf.toString();
 	}
+	/**
+	 * 加了盐的Md5数字摘要算法
+	 * @param uniqueId 用户唯一标识
+	 * @param text 需要加密的文本
+	 * @param flag 用户类型M:后台操作员，P:会员
+	 * @return 返回加密后的字符串
+	 */
+	public static String Md5(String uniqueId, String text, String flag) {
+		StringBuffer salts = new StringBuffer(uniqueId);
+		if(flag!=null && "M".equals(flag)){//对后台系统操作员加盐
+			salts.append("Manager");
+		}else if(flag!=null && "P".equals(flag)){//对会员加盐
+			salts.append("People");
+		}else{
+			salts.append("Others");//其他
+		}
+		//加入文本
+		salts.append(text);
+		//使用Md5数字摘要算法
+		return Md5(salts.toString());
+	}
 
 	/**
 	 * 微信支付签名MD5加密算法

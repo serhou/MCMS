@@ -104,7 +104,7 @@ public class PeopleAction extends BaseAction {
 		// 获取用户session
 		PeopleEntity _people = this.getPeopleBySession(request);
 		PeopleEntity curPeople = peopleBiz.getByPeople(_people, this.getAppId(request)); 
-		if (!curPeople.getPeoplePassword().equals(StringUtil.Md5(people.getPeopleOldPassword()))) {
+		if (!curPeople.getPeoplePassword().equals(StringUtil.Md5(people.getPeopleName(), people.getPeopleOldPassword(), "P"))) {
 			// 用户或密码不能为空
 			this.outJson(response, ModelCode.PEOPLE, false,
 					this.getResString("err.error", this.getResString("people.password")));
