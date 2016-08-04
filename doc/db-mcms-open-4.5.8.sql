@@ -825,7 +825,7 @@ CREATE TABLE `manager` (
 -- ----------------------------
 -- Records of manager
 -- ----------------------------
-INSERT INTO `manager` VALUES ('50', 'msopen', 'msopen', '9d8622060de5f24937b60585c3f4d66b', '48', '0', '2015-09-18 11:54:36');
+INSERT INTO `manager` VALUES ('50', 'msopen', 'msopen', '1af9ac7fe08379f2e04cff8bcdc4548b', '48', '0', '2015-09-18 11:54:36');
 
 -- ----------------------------
 -- Table structure for `manager_model_page`
