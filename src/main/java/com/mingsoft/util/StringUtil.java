@@ -47,6 +47,8 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.mingsoft.base.constant.Const;
+
 /**
  * 字符串解析
  * @author 王天培QQ:78750478
@@ -498,8 +500,8 @@ public class StringUtil {
 		}
 		//加入文本
 		salts.append(text);
-		//使用Md5数字摘要算法
-		return Md5(salts.toString());
+		//使用Md5数字摘要算法,默认字符串编码utf-8
+		return Md5(salts.toString(), Const.UTF8);
 	}
 
 	/**

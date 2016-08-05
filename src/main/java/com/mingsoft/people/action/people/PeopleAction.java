@@ -104,14 +104,14 @@ public class PeopleAction extends BaseAction {
 		// 获取用户session
 		PeopleEntity _people = this.getPeopleBySession(request);
 		PeopleEntity curPeople = peopleBiz.getByPeople(_people, this.getAppId(request)); 
+		// 将用户输入的原始密码用MD5加密再和数据库中的进行比对
 		if (!curPeople.getPeoplePassword().equals(StringUtil.Md5(people.getPeopleName(), people.getPeopleOldPassword(), "P"))) {
 			// 用户或密码不能为空
 			this.outJson(response, ModelCode.PEOPLE, false,
 					this.getResString("err.error", this.getResString("people.password")));
 			return;
 		}
-		// 将用户输入的原始密码用MD5加密再和数据库中的进行比对
-		String peoplePassWord = StringUtil.Md5(people.getPeoplePassword(), Const.UTF8);
+		String peoplePassWord = StringUtil.Md5(people.getPeopleName(), people.getPeoplePassword(), "P");
 		// 执行修改
 		_people.setPeoplePassword(peoplePassWord);
 		this.peopleBiz.updateEntity(_people);
