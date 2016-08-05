@@ -15,16 +15,16 @@
 						<@ms.panelNavBtnDel  id="totalDelete"/>
 					</@ms.panelNavBtnGroup>
 				</@ms.panelNav>
-	              <@ms.table head=['账号','昵称','密码','角色名称',"<th style='text-align:center'>添加时间</th>"] checkbox="checkbox">
+	              <@ms.table head=['账号','昵称','角色名称',"<th style='text-align:center'>添加时间</th>"] checkbox="checkbox">
 	           			<#if listManager?has_content>
 	           				<#list listManager as manager>
 	                    	<tr>
-						          	<td style="text-align:center;width:10%;">
+						          	<td style="text-align:center;width:20%;">
 					            		<#if manager.managerName != managerSession.managerName>
 		  									<input type="checkbox" name="checkbox" value="${manager.managerId?c?default(0)}">
 		  								</#if>
 						            </td>	          	
-						            <td style="width:10%">
+						            <td style="width:20%">
 						            	
 						            	<#if manager.managerName != managerSession.managerName>
 						                    
@@ -35,9 +35,8 @@
 					                    	${manager.managerName?default("暂无")}
 				                    	</#if>	
 						            </td>
-						            <td style="width:10%">${manager.managerNickName?default("暂无")}</td>
-						 			<td style="width:25%">${manager.managerPassword?default("暂无")}</td>
-						            <td style="width:10%" >${manager.roleName?default("暂无")}</td>
+						            <td style="width:20%">${manager.managerNickName?default("暂无")}</td>
+						            <td style="width:20%" >${manager.roleName?default("暂无")}</td>
 						            <td class="text-center">${manager.managerTime?string("yyyy-MM-dd HH:mm:ss")}</td>
 						         </tr>
 	                    	</#list>
@@ -60,7 +59,7 @@
 				<@ms.form isvalidation=true name="updateManager" id="updateManager"  action="">	
 		    		<@ms.text name="managerName"    label="账号" title="账号" maxlength="30" placeholder="请输入账号" validation={"required":"true", "data-bv-notempty-message":"账号不能为空"}/>
 		    		<@ms.text name="managerNickName"    label="昵称" title="昵称"  maxlength="30" placeholder="请输入昵称" validation={"required":"true", "data-bv-notempty-message":"昵称不能为空"}/>
-		    		<@ms.text name="managerPassword"    label="密码" title="密码"  maxlength="100" placeholder="请输入密码"/>	
+		    		<@ms.password name="managerPassword"    label="密码" title="密码"  maxlength="100" placeholder="请输入密码"/>	
 					<@ms.select  name="managerRoleID" label="选择角色"  list=listRole  id="orderStatus" listKey="roleId"  listValue="roleName" value="" style="width:57%" validation={"required":"true", "data-bv-notempty-message":"角色不能为空"}/>
 	    			<input type="hidden" class="managerPeopleID" name="managerPeopleID" value="0"/>
 					<input type="hidden" class="oldManagerName" name="oldManagerName" value=""/>
@@ -184,7 +183,7 @@
 		$("#updateButton").text("更新");	
 		//找到点击的id
 		var managerId =  $(this).attr("data-id");
-		URL="${basePath}/manager/manager/"+managerId+"/edit.do";
+		URL="${managerPath}/manager/"+managerId+"/edit.do";
 		$.ajax({
 			type: "post",
 			dataType:"json",
