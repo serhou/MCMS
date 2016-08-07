@@ -12,8 +12,8 @@
     <div class="ms-top navbar-fixed-top">
         <!--头部LOGO-->
         <div class="ms-top-logo"><img src="${skin_manager_logo}" width="40%"/></div>
-        <a href="javascript:" id="suo" style="width:50px;height:100%;float:left;display:block;color:#E4E4E4">
-            <span class="glyphicon glyphicon-menu-hamburger" style="font-size:18px;padding:10px 0px 0px 16px;" data-is="false"></span>
+        <a href="javascript:" id="suo" style="width:60px;height:100%;float:left;display:block;color:#E4E4E4" data-toggle="tooltip" data-placement="bottom" title="显隐菜单">
+            <span class="glyphicon glyphicon-menu-hamburger" style="font-size:18px;padding:10px 0px 0px 16px;"></span>
         </a>
         <div class="ms-top-menu">
             <div class="btn-group" role="group" aria-label="..." style="float:right;">
